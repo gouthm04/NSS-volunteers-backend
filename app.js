@@ -45,7 +45,22 @@ app.post("/view-vol", async (req, res) => {
     res.json(volunteers);
   } catch (err) {
     console.log(err);
-    
+    res.status(500).json({
+      status: "Failed",
+      error: err.message,
+    });
+  }
+});
+
+app.post("/add-vol", async (req, res) => {
+  try {
+    await volunteerData.create(req.body);
+    res.json({ status: "Success" });
+  } catch (err) {
+    res.status(500).json({
+      status: "Failed",
+      error: err.message,
+    });
   }
 });
 
