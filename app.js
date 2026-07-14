@@ -40,10 +40,13 @@ app.get("/test", (req, res) => {
 });
 
 
+
 app.post("/add-vol" ,async(req,res) => {
     await volunteerData.create(req.body)
     res.json({"status" : "Success"})
 })
+
+
 
 app.listen(3000, () => {
   console.log("Server Started");
