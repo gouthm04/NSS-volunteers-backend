@@ -39,6 +39,16 @@ app.get("/test", (req, res) => {
   res.send("hai");
 });
 
+app.post("/view-vol", async (req, res) => {
+  try {
+    const volunteers = await volunteerData.find(req.body);
+    res.json(volunteers);
+  } catch (err) {
+    console.log(err);
+    
+  }
+});
+
 app.listen(3000, () => {
   console.log("Server Started");
 });
